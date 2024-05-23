@@ -4,13 +4,8 @@ export const config = { runtime: 'edge' }
 
 const sanitizeURL = url => (url.startsWith('http') ? url : `http://${url}`)
 
-export const GET = async req => {
+export default async req => {
   const { pathname } = new URL(req.url)
-  console.debug(pathname)
-  const url = new URL(sanitizeURL(pathname))
-  console.debug(url.href)
-  const response = await fetch(url)
-  const data = await response.json()
-  console.debug(data)
-  return new Response(toXML(data))
+  const response = await fetch(sanitizeURL(pathname.slice(1)))
+  return new Response(toXML(await response.json()))
 }
