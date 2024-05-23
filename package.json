@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "to-xml": "^0.1.11"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
