@@ -6,6 +6,7 @@ const sanitizeURL = url => (url.startsWith('http') ? url : `http://${url}`)
 
 export const GET = async req => {
   const { pathname } = new URL(req.url)
+  console.debug(pathname)
   const url = new URL(sanitizeURL(pathname))
   console.debug(url.href)
   const response = await fetch(url)
